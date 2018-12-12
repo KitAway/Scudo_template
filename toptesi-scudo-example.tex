@@ -1,0 +1,292 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = lualatex
+% !BIB TS-program = biber
+
+%%%%%%% The above first line is used to auto-configure those LaTeX
+%%%%%%% friendly editors, such as TeXShop, TeXworks, TeXstudio 
+%%%%%%% so as to use the UTF-8 encoding for editing the source
+%%%%%%% files and to save them.
+
+%%%%%%% For the same editors the second line specifies which 
+%%%%%%% typesetting engine is to be used when hitting the editor's
+%%%%%%% button that launches the typesetting job.
+%%%%%%% You can chose between pdflatex, lualatex or xelatex; in general
+%%%%%%% it is better to avoid using xelatex and to prefer lualatex.
+
+%%%%%%% If and only if you want to produce an archivable document
+%%%%%%% according to the ISO regulation 19005:2005-1b add the
+%%%%%%% following code before the statement \documentclass, and
+%%%%%%% adapt its contents to your particular thesis.
+
+\begin{filecontents*}{\jobname.xmpdata}
+\Author{Mario Rossi}
+\Title{Writing Your Ph.D. Thesis with LaTeX}
+\Subject{Doctoral dissertations in the SCUDO doctoral school}
+\Keywords{PDF\sep
+          PDF/A\sep
+          ISO 19005\sep
+          LaTeX\sep
+          PhD Thesis\sep
+          Engineering\sep
+          SCUDO}
+\Publisher{Politecnico di Torino}
+\end{filecontents*}
+
+
+\documentclass[%
+   12pt,
+   twoside,
+   tipotesi=scudo,
+   numerazioneromana,
+   ]{toptesi}
+ 
+%%%% Use the following package if and only if you want to produce
+%%%% an archivable document according to standard PDF/A-1b
+%%%% No need to load package imakeidx, because it has already been
+%%%% loaded by the specific module toptesi-scudo.
+\usepackage[a-1b]{pdfx}
+%%%%%% Read the English documentation of TOPtesi in order to check
+%%%%%% the special attention needed to produce ISO compliant
+%%%%%% archivable files
+
+%%%%
+
+\ifPDFTeX
+    \usepackage[utf8]{inputenc}% 
+    \usepackage[T1]{fontenc}
+\fi
+
+\errorcontextlines=9% more information on the console in case of errors
+
+%%%% Specify fonts here; chose one among these fonts by leaving just
+%%%% one line without initial comment character.
+%%%% With LuaLaTeX or XeLaTeX don't change fonts
+\ifPDFTeX % using pdflatex
+    \usepackage{lmodern} % Default
+    %\usepackage{newtxtext,newtxmath}% Times eXtended for text and math
+    %\usepackage{fourier}% Utopia, Helvetica and "monospace = ?"
+
+\else % using lualatex (or xelatex}
+    \usepackage{fontspec}
+    \defaultfontfeatures{Ligatures=TeX}
+    \setmainfont{Libertinus Serif}
+    \setsansfont{Libertinus Sans}
+    \setmonofont{Libertinus Mono}[Scale=MatchLowercase]
+    \usepackage{unicode-math}% add special math stile option here
+                             % for example [style=ISO]
+% chose one math font by commenting the line of the undesired font
+    \setmathfont{XITS Math}
+\fi
+
+\makeindex[intoc]% collect material to index
+
+\usepackage{kantlipsum} % to produce dummy text
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is to be loaded as the end of the preamble if one wants
+% to use hyperlinks and/or urs to be typed within the thesis,
+% except that after loading hyperref very few commands may be
+% issued. One is the \includeonly command with its list of files;
+% other packages may be loaded after hyperref, only if their
+% documentation says so; some of these packages, but they are
+% not the only ones, involve Right to left languages or other
+% oriental languages.
+%
+% Distinguish the hyperref call from the hyperref setup so as
+% to avoid option clashes with other packages that may invoke 
+% hyperref with different options.
+
+\unless\ifcsname ver@hyperref.sty\endcsname\usepackage{hyperref}\fi
+\hypersetup{%
+    pdfpagemode={UseOutlines},
+    bookmarksopen,
+    pdfstartview={FitH},
+    colorlinks,
+    linkcolor={blue},
+    citecolor={blue},
+    urlcolor={blue}
+  }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% The \includeonly argument should preferably written with
+%%%% one name per line, so that by commenting or uncommenting
+%%%% some lines a selective compilation may be executed.
+\includeonly{%
+Chapter1/chapter1,%
+Chapter2/chapter2,%
+Chapter3/chapter3,%
+Appendix1/appendix1,%
+Appendix2/appendix2%
+}
+
+
+\ifPDFTeX \usepackage{indentfirst}\fi
+\raggedbottom
+\begin{document}
+
+
+% The contents of this ThesisTitlePage environment may be written
+% in a configuration file named exactly the same as the thesis main
+% file, but with extension .cfg. If similar commands with different
+% data are written within this environment, such data prevail on
+% those read from the configuration file.
+\begin{ThesisTitlePage}
+% Use the optional command to set a different School logo
+% Its is possible to used this command several times; each time
+% a new different  Institution logo  may be added. In general
+% just the ScuDo logo is sufficient; for dissertations made in
+% cooperation with the University of Turin, its logo may be added
+% with a second instance of the \PhGschoolLog statement. With
+% dissertations supported by the INRiM, this institution logo may
+% be added. Such logos (in PDF format) may be obtained from the
+% ScuDo web server.
+\PhDschoolLogo{Logo-ScuDo-blu} % just the ScuDo logo
+%\PhDschoolLogo{Logo-ScuDo-blu,Logo-INRIM} %for dissertations made in cooperation with INRIM
+%\PhDschoolLogo{Logo-ScuDo-blu,Logo-INFN} %for dissertations made in cooperation with INFN
+%\PhDschoolLogo{Logo-ScuDo-blu,Logo-UniTo} %for dissertations made in cooperation with the University of Turin
+% Doctorate course name; mandatory
+\ProgramName{Energy Enginering}
+% Cycle ordinal number; optional.
+% You can write 29.th, or 29\ap{th}, or 29\textsuperscript{th}, or ...
+\CycleNumber{29.th}
+% PhD candidate name; mandatory
+\author{Mario Rossi}
+% Dissertation title; mandatory
+\title{Writing your Doctoral~Thesis\\with \LaTeX}
+% Dissertation subtitle: optional.
+% It might be useful only if the actual full title is too long.
+\subtitle{This document is an example of what you can do\\with~the~TOPtesi class}
+% The supervisor(s) label; optional; default value "Supervisor:".
+% You can change it to plural as in this example, where the colon has
+% been eliminated.
+%\NSupervisor{Supervisor}{Supervisors}
+%
+% The SupervisorNumber may contain a value such as 0, 1, or any
+% number higher than 1. If 0 is specified, no label is typeset
+% over the supervisor(s) list; if 1 is specified then the singular
+% form is used: if any value higher than 1 is specified, the plural
+% form is used.
+\SupervisorNumber{2}
+% List of supervisors with academic title, name(s), surname(s),
+% and function; mandatory
+\SupervisorList{%
+    Prof.~A.B., Supervisor\\
+    Prof.~C.D. Co-supervisor}
+% Name of the examining committee: optional. 
+% Default value "Doctoral Examination Committee"
+%\Nexaminationcommittee{Doctoral examination committee}
+% List of the  examining committee members: mandatory if the above label
+% is not empty.
+\ExaminerList{%
+Prof.~A.B., Referee, University of \dots\\
+Prof.~C.D., Referee, University of \dots\\
+Prof.~E.F., University of \dots\\
+Prof.~G.H., University of \dots\\
+Prof.~I.J., University of \dots}
+% Name of the institution where the examination takes place; optional.
+% Default value: "Politecnico di Torino"
+%\Nlocation{Politecnico di Torino}
+% Examination date: mandatory, although the way to write it is free.
+\ExaminationDate{February 29, 2123}
+% Disclaimer with signature; optional. Default text as
+% in the following lines. 
+\Disclaimer{%
+\noindent I hereby declare that, the contents and organisation of this dissertation constitute my own original work and does not compromise in any way the rights of third parties, including those relating to the security of personal data.	
+}
+%\Signature{%
+%\begin{flushright}
+%\parbox{0.5\textwidth}{\centering
+%\dotfill\\
+%Mario Rossi\\
+%Turin, February 29, 2123
+%}
+%\end{flushright}}
+\end{ThesisTitlePage}
+%%%%%%%%%%%%%%%% Everything else necessary in the thesis title
+%%%%%%%%%%%%%%%% page and in the copyright page is supplied by
+%%%%%%%%%%%%%%%% the default values.
+%%%%%%%%%%%%%%%% If you enter an explicit disclaimer, you can
+%%%%%%%%%%%%%%%% typeset other material before the disclaimer
+%%%%%%%%%%%%%%%% formula; use the necessary spacing on order
+%%%%%%%%%%%%%%%% to separate the formula from other text. 
+%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%% For example you might want to write the formula
+%%%%%%%%%%%%%%%% for a particular licence, provided the licence 
+%%%%%%%%%%%%%%%% allows Open access; not necessarily all uses
+%%%%%%%%%%%%%%%% of the thesis should be allowed, but the minimum
+%%%%%%%%%%%%%%%% is the reading access.
+
+%%%%%%%%%%%%%%%% The next two lines are metadata for a normal PDF file.
+%%%%%%%%%%%%%%%% For ISO archivable PDF/A-1b metadata, they must
+%%%%%%%%%%%%%%%% be entered only in the form used in the file
+%%%%%%%%%%%%%%%% named in the filecontents* environment as shown
+%%%%%%%%%%%%%%%% at the beginning of this file.
+
+%\subject{How to typeset a doctoral thesis suitable for defence in almost any country and university.}
+%\keywords{{pdfLaTeX} {LuaLaTeX} {XeLaTeX} {PhD doctoral programs} {PhD dissertation} {Politecnico di Torino}} 
+
+\summary%\sommario
+
+This is where you write your abstract \dots\ (Maximum 4000 characters, i.e. maximum two pages in normal sized font, typeset with the thesis layout).
+
+The abstract environment is also available, but  \texttt{\string\summary} is preferred because it generates an un-numbered chapter. The abstract environment is more suitable for articles and two column typesetting without a separate title page.
+
+\emptypage %  it works even without the classica option
+\acknowledgements% or \ringraziamenti
+
+And I would like to acknowledge \dots
+
+Acknowledgements are mandatory when people outside the academic institution supported the development of the research that was performed in order to reach the conclusion of the doctorate program.
+
+\begin{dedication}
+
+\textit{I would like to dedicate this thesis to my loving parents} 
+
+{\normalsize 
+The dedication very seldom is a proper thing to do; in some countries it is very common, while in other countries it is done for imitation of other people habits. 
+
+The sentence used above clearly is an example of something very common, but it is  useless. Of course we all love our beloved parents, but it is not necessary to ``engrave it in stone''.
+\par}
+\end{dedication}
+%\end{dedica}
+
+%%%%%%%%% Unless you want these two lists, comment the following line
+\tablespagetrue\figurespagetrue % 
+
+%%%%%%%%% Table of contents and optionally the tables and figures lists
+\allcontents
+
+\mainmatter %all the above is front matter; here begins the main matter
+
+\include{Chapter1/chapter1}
+\include{Chapter2/chapter2}
+\include{Chapter3/chapter3}
+% Numbered appendices remain in the main matter...
+\appendix
+\include{Appendix1/appendix1}
+\include{Appendix2/appendix2}
+
+\backmatter% here begins the back matter
+% ... otherwise a single appendix may stay here
+% \include{Appendix0/appendix0}
+
+% Do not use this command if you did not prepare a nomenclature
+% database by means od the suitable \nomenclature command and its
+% arguments, as we did in chapter 2 of this example thesis.
+\printnomencl
+
+% In this example we use \nocite{*} in order to typeset the whole
+% contents of the bibliographic database. Normally this is not
+% necessary and it's better to let biber extract from the database
+% only the cited works
+\nocite{*}
+
+\printbibliography[heading=bibintoc]
+
+% Do not use this command if you did not set the \makeindex switch
+% in the preamble.
+
+\printindex
+
+\end{document}
+

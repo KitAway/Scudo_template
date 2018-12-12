@@ -1,0 +1,161 @@
+% !TEX root = ../toptesi-scudo-example.tex
+% !TEX encoding = UTF-8 Unicode
+% ******************************* Thesis Appendix A 
+
+\chapter{How to install \LaTeX} 
+\label{Appendix1}
+
+These installing instructions are typical, but who prepared this file did not check their validity; the author of this example uses a Mac with OS~X; he can confirm that the instructions given below for this platform are correct, but he cannot honestly guarantee the same correctness for the other platforms.
+
+
+
+\section*{Windows OS}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\subsection*{Complete TeXLive \TeX~distribution}
+\begin{enumerate}
+\item	Download the TeXLive ISO from\\
+\href{https://www.tug.org/texlive/}{https://www.tug.org/texlive/}\\
+and open it by simply double clicking on its name in an Explorer  window.
+\item If you don't have Win8 or higher do the following.
+\begin{enumerate}
+\item	Download WinCDEmu  from \\
+\href{http://wincdemu.sysprogs.org/download/}
+{http://wincdemu.sysprogs.org/download/}
+\item	To install Windows CD Emulator follow the instructions at\\
+\href{http://wincdemu.sysprogs.org/tutorials/install/}
+{http://wincdemu.sysprogs.org/tutorials/install/}
+\item	Right click the iso and mount it using the WinCDEmu as shown in \\
+\href{http://wincdemu.sysprogs.org/tutorials/mount/}{
+http://wincdemu.sysprogs.org/tutorials/mount/}
+\end{enumerate}
+\item If you have Win8 or higher open your the ISO image as if it were a real mounted disk, and run setup.pl.
+\end{enumerate}
+
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\subsection*{Complete MikTeX - \TeX~distribution}
+\begin{enumerate}
+\item	Download Complete-MiK\TeX\ (32bit or 64bit) from\\
+\href{http://miktex.org/download}{http://miktex.org/download}
+\item	Run the installer 
+\end{enumerate}
+
+\subsection*{Textudio - \TeX~editor}
+\begin{enumerate}
+\item	Download TexStudio from\\
+\href{http://texstudio.sourceforge.net/\#downloads}
+{http://texstudio.sourceforge.net/\#downloads} 
+\item	Run the installer
+\end{enumerate}
+%==========================================================
+\section*{Mac OS X}
+\subsection*{MacTeX - \TeX~distribution}
+\begin{enumerate}
+\item	Download the file from\\
+\href{https://www.tug.org/mactex/}{https://www.tug.org/mactex/}
+\item	Double click to run the installer and answer its questions. It does the entire configuration, sit back and relax.
+\end{enumerate}
+
+\subsection*{TeXShop or TexStudio - \TeX~editors}
+\begin{enumerate}
+\item Installing MacTeX gives you the opportunity to work with a Mac specific \TeX~editor, TeXShop; double click on its app in \texttt{\string~/Library/TeX/}; configure the launch bar to keep its icon to remain in the launch bar; set the TeXShop Preferences so as to have the UTF-8 encoding as the default one for editing and saving source files.
+\item	If you are accustomed to different styled editors, download TexStudio from\\
+\href{http://texstudio.sourceforge.net/\#downloads}
+{http://texstudio.sourceforge.net/\#downloads} 
+\item	Extract, Start, configure the launch bar so as to permanently keep its icon. 
+\end{enumerate}
+
+%===============================================
+\section*{Unix/Linux}
+\subsection*{Complete TeXLive - \TeX~ distribution}
+\subsubsection*{Getting the distribution:}
+TexLive can be downloaded from\\
+  \href{http://www.tug.org/texlive/acquire-netinstall.html}
+  {http://www.tug.org/texlive/acquire-netinstall.html}. 
+Or a TexLive ISO file may be downloaded from the same location.
+Follow the instructions given in the same Web site; Linux distributions are too different to give here a single  set of instructions valid for any incarnation of Linux. 
+
+For Debian compliant Linux versions see the next section.
+
+%\begin{description}
+%  \item[Installation]~
+%    \begin{enumerate}
+%      \item[]	Mount the ISO file in the mnt directory
+%        \begin{Verbatim}
+%        mount -t iso9660 -o ro,loop,noauto /your/texlive####.iso /mnt
+%        \end{Verbatim}
+%    \end{enumerate}
+%  \item[Install form ISO]~\\
+%    Open the ISO file by double clicking on its icon; select 
+%    \texttt{install-tl} and execute it.
+%  \item[Installing]~
+%    \begin{enumerate}
+%      \item	Install wget on your OS (use rpm, apt-get or yum install)
+%      \item	Run the installer script install-tl.
+%      \begin{verbatim}
+%      	cd /your/download/directory
+%      	./install-tl
+%      \end{verbatim}
+%      \item	Enter command `i' for installation
+%      
+%      \item	Post-Installation configuration:\\
+%      \href{http://www.tug.org/texlive/doc/texlive-en/texlive-en.html\#x1-320003.4.1}
+%      {http://www.tug.org/texlive/doc/texlive-en/texlive-en.html\#x1-320003.4.1} 
+%      \item	Set the path for the directory of TexLive binaries in your 
+%      \texttt{.bashrc} file.
+%    \end{enumerate}
+%\end{description}
+%%
+%For Bourne-compatible shells (such as the bash shell) and using an Intel x86 GNU\discretionary{/}{}{/}Linux\footnote{The primitive command \texttt{\string\discretionary} inserts a discretionary line break; in this case it was inserted to allow a break after the slash sign. It is very unlikely that the final user of this template needs to use such tricks. In any case the user may read some advanced \TeX\ system guide, or the ultimate \TeX\ reference, the {\TeX}\-book itself, in oder to get the complete documentations about such native commands.} with a default directory setup as an example, the file to edit might be one of the following.
+%\begin{description}
+%  \item[For 32bit OS]~\\
+%    \begin{Verbatim}
+%    edit $~/.bashrc file and add following lines
+%    PATH=/usr/local/texlive/2011/bin/i386-linux:$PATH; 
+%    export PATH 
+%    MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH;
+%    export MANPATH 
+%    INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH;
+%    export INFOPATH
+%    \end{Verbatim}
+%  \item[For 64bit OS]~\\
+%    \begin{Verbatim}
+%    edit $~/.bashrc file and add following lines
+%    PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH;
+%    export PATH 
+%    MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH;
+%    export MANPATH 
+%    INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH;
+%    export INFOPATH
+%    \end{Verbatim}
+%\end{description}
+%%\end{enumerate}
+
+\subsubsection*{Debian}
+A Debian compliant TexLive is provided by most Linux operating systems; you can use (rpm, apt-get, yum, dots) to get TexLive packages; pay attention to download the complete set of different packages into which the Debian compliant Linux TexLive  distribution is subdivided. 
+%
+\begin{description}
+  \item[Fedora/RedHat/CentOS:]~\\[-\baselineskip]
+    \begin{verbatim} 
+    sudo yum install texlive 
+    sudo yum install psutils 
+    \end{verbatim}
+  \item[SUSE:]~\\[-1.5\baselineskip]
+    \begin{verbatim}
+    sudo zypper install texlive
+    \end{verbatim}
+  \item[Debian/Ubuntu:]~\\[-\baselineskip]
+    \begin{verbatim} 
+    sudo apt-get install texlive texlive-latex-extra 
+    sudo apt-get install psutils
+    \end{verbatim}
+\end{description}
+
+Pay attention to this substantial difference; TeXLive is a very lively maintained distribution; there are daily upgrades of existing packages and some new packages every week. The TeXLive distribution installed from a CTAN archive or mirror is updated almost every day; nobody needs to upgrade his/her installation everyday, but it is a good policy to do this simple operation (by means of the installed program \texttt{tlmgr} GUI) every week or so; twice a month is the suggested upgrading frequency.
+
+The Debian compliant installation gets upgraded by the Debian consortium before being released to the users; this takes place every few months, in any case at least once a year. The Debian installation therefore lacks the \texttt{tlmgr} GUI and the user can only explore the Debian repositories to find out if there exists an updated TeXLive version.
+
+In any case there is an article on TUGboat (the official magazine of the international \TeX\ Users Group) that explains how to install the CTAN TeXLive version (\cite{art:GregorioTUB-ubuntu}\footnote{In spite of being published in 2011, the article is till valid, even if sometimes a few details on Linux platforms have changed. You can download this article from this link: \url{https://www.tug.org/TUGboat/tb32-1/tb100gregorio.pdf}. An Italian version of this article can be downloaded from: \url{http://profs.sci.univr.it/~gregorio/texlive-ubuntu.pdf}}) on Linux platforms, with particular attention to the Debian compliant operating systems. This CTAN installation can live side by side with the Debian one; the former for actual typesetting, the latter for satisfying certain Debian dependencies. It is not mandatory to use the CTAN installation on Debian platforms, but it is strongly suggested in accordance with the different updating\slash upgrading policies followed by the CTAN maintainers compared to the Debian ones.
+
+
+
+
